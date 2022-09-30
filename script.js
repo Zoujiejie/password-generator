@@ -8,8 +8,9 @@ var password = "";
 var validChars = ""
 
 // Get references to the #generate element
-var password = document.getElementById("password");
 var generateBtn = document.querySelector("#generate");
+var password = document.getElementById("password");
+
 
 if (password) {
   validChars += numric;
@@ -27,6 +28,10 @@ if (password) {
   validChars += specialcharacters;
 }
 
+if (password) {
+  passwordLength <= 128;
+}
+
 function generatePassword() {
   for (var i = 0; i < passwordLength; i++) {
     var index = Math.floor(Math.random() * validChars.length);
@@ -34,6 +39,7 @@ function generatePassword() {
   }
 
   return password;
+  
 }
 
 // Write password to the #password input
