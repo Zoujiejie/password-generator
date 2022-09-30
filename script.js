@@ -3,53 +3,94 @@ var numric = "0123456789";
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var specialcharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-var passwordLength = 8;
 var password = "";
-var validChars = ""
+var validChars = "";
+var promptLength;
+var lowerSelection = false;
+var upperSelection = false;
+var specialcharactersSelection = false;
+var numricSelection = false;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-var password = document.getElementById("password");
 
+function prompts() {
 
-if (password) {
-  validChars += numric;
+  promptLength = prompt("What length would you like the password to be? (Between 8 to 128 characters)");
+
+  /*
+  if (promptLength<8){
+    alert("Password length must be a number between 8-128 characters");
+  }
+  
+  if (promptLength>128){
+    alert("Password length must be a number between 8-128 characters");
+  }
+  
+  return promptLength;}
+  */
+
+  if (confirm("Would you like lowercase characters in your password") == true) {
+    lowerSelection = true;
+  }
+
+  if (confirm("Would you like uppercase characters in your password") == true) {
+    upperSelection = true;
+  }
+
+  if (confirm("Would you like numric characters in your password") == true) {
+    numricSelection = true;
+  }
+
+  if (confirm("Would you like special characters characters in your password") == true) {
+    specialcharactersSelection = true;
+  }
 }
 
-if (password) {
-  validChars += lowercase;
-}
+function createPassword() {
+  if (password) {
+    validChars += numric;
+  }
 
-if (password) {
-  validChars += uppercase;
-}
+  if (lowerSelection) {
+    validChars += lowercase;
+  }
 
-if (password) {
-  validChars += specialcharacters;
-}
+  if (upperSelection) {
+    validChars += uppercase;
+  }
 
-if (password) {
-  passwordLength <= 128;
+  if (password) {
+    validChars += specialcharacters;
+  }
+
 }
 
 function generatePassword() {
-  for (var i = 0; i < passwordLength; i++) {
+  password = "";
+  for (var i = 0; i < promptLength; i++) {
     var index = Math.floor(Math.random() * validChars.length);
     password += validChars[index];
   }
 
   return password;
-  
 }
+
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
+  return password;
 
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", function () {
+  prompts();
+  createPassword();
+  generatePassword();
+  writePassword();
+}
+)
