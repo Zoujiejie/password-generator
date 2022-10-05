@@ -18,17 +18,14 @@ function prompts() {
 
   promptLength = prompt("What length would you like the password to be? (Between 8 to 128 characters)");
 
-  /*
-  if (promptLength<8){
-    alert("Password length must be a number between 8-128 characters");
+  promptLength = parseInt(promptLength)
+
+  while (promptLength < 8 || promptLength > 128 || isNaN(promptLength)) {
+    promptLength = parseInt(prompt("Invalid input. Please provide a password between 8 and 128 characters)"));
   }
-  
-  if (promptLength>128){
-    alert("Password length must be a number between 8-128 characters");
-  }
-  
-  return promptLength;}
-  */
+
+  // return promptLength;}
+
 
   if (confirm("Would you like lowercase characters in your password") == true) {
     lowerSelection = true;
@@ -80,6 +77,7 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  console.log (password);
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
   return password;
