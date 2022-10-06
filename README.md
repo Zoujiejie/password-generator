@@ -20,3 +20,5 @@
 - Step 3: Generate a password that meets the criteria
 - Step 4: Display the password -- alert or on the page
 
+## Deployed
+* [https://zoujiejie.github.io/password-generator/]
