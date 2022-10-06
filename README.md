@@ -21,4 +21,4 @@
 - Step 4: Display the password -- alert or on the page
 
 ## Deployed
-* [https://zoujiejie.github.io/password-generator/]
+* [GitHub Page](https://zoujiejie.github.io/password-generator/)
